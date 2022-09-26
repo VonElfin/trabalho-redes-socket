@@ -15,9 +15,9 @@ except:
 def receiveMessage():
     while True:
         try:
-            message = client.recv(2048).decode('ascii')
+            message = client.recv(2048).decode('utf-8')
             if message=='getUser':
-                client.send(username.encode('ascii'))
+                client.send(username.encode('utf-8'))
             else:
                 print(message)
         except:
@@ -25,7 +25,7 @@ def receiveMessage():
 
 def sendMessage():
     while True:
-        client.send(input().encode('ascii'))
+        client.send(input().encode('utf-8'))
 
 thread1 = threading.Thread(target=receiveMessage,args=())
 thread2 = threading.Thread(target=sendMessage,args=())
